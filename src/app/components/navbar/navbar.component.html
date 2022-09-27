@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <i class="fas fa-book-open"></i>
+        <span> The BookShop</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll"
+        aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav m-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/books" routerLinkActive="active">Books</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
+            </li>
+        </ul>
+        <div class="options">
+            <span class="dropdown">
+                <button class="wishlist option-item dropdown-toggle" data-toggle="dropdown"
+                    aria-expanded="false"><i class="fas fa-heart"></i></button>
+                <div class="dropdown-menu">
+                    <span class="dropdown-item">
+                    </span>
+                </div>
+            </span>
+
+            <span class="dropdown">
+                <button class="cart option-item dropdown-toggle" data-toggle="dropdown"
+                    aria-expanded="false"><i class="fas fa-cart-arrow-down"></i></button>
+                <div class="dropdown-menu">
+                    <span class="dropdown-item">
+                    </span>
+                </div>
+            </span>
+
+            <span class="dropdown">
+                <button class="user option-item dropdown-toggle" data-toggle="dropdown"
+                    aria-expanded="false"><i class="fas fa-user"></i></button>
+                <div class="dropdown-menu">
+                    <span class="dropdown-item">
+                    </span>
+                </div>
+            </span>
+        </div>
+    </div>
+</nav>

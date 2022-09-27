@@ -1,0 +1,22 @@
+orange - #d85c27
+neutral - #efefef --
+grain - d7cec7  --
+tan c09f80
+carbon - a9a9a9
+
+blackboard - 565656
+bloodred - 76323f
+
+old
+f6f6f2
+f6f6f290
+rgba(178,178,162, 0.5)
+
+header- 
+background-color: #d7cec790;
+
+background-
+    background-color: #d7cec7;
+
+black-
+background-color: rgba(0, 0, 0, 0.700);

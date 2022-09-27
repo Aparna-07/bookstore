@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.tagline{
+    color: rgb(44, 66, 80);
+    font-family: 'Roboto','DynaPuff', cursive;
+}
+
+h1.tagline{
+    font-weight: bold;
+}
+
+p.tagline{
+    font-size: 22px;
+}
+
+.image{
+    height: 100vh;
+    overflow-y: hidden;
+}
+img{
+    width: 100%;
+}
+
+.form-wrapper{
+    margin: auto;
+    padding: 60px;
+}
+
+input, .input-group i{
+    font-size: 20px;
+}
+
+.login{
+    background-color: rgba(71, 100, 120);
+    border: none;
+    font-size: 20px;
+}
+
+.register{
+    border: none;
+    background-color: white;
+    display: block;
+    margin: auto;
+    padding: 10px;
+    color: rgb(44, 66, 80);
+    transition: 100ms all ease;
+}
+
+.register:hover{
+    font-weight: bold;
+}

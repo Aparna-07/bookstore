@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-5 form-wrapper">
+            <h1 class="text-left tagline">Register</h1>
+            <p class="tagline">And enjoy a new world inside books!</p>
+            <br />
+            <br />
+            <form [formGroup]="myForm" (submit)="Register()">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                        <input type="text" name="UserName" id="name" class="form-control" placeholder="Name" formControlName="name"
+                         [(ngModel)]="user.UserName" [class.is-invalid]="name?.invalid && name?.touched">
+                    </div>
+                    <small class="text-danger" *ngIf="name?.invalid && name?.touched">Name is required.</small>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </div>
+                        <input type="email" name="Email" id="email" class="form-control" placeholder="Email" formControlName="email"
+                         [(ngModel)]="user.Email" [class.is-invalid]="email?.invalid && email?.touched">
+                    </div>
+                    <small class="text-danger" *ngIf="email?.errors?.['required'] && email?.touched">Email is required.</small>
+                    <small class="text-danger" *ngIf="email?.errors?.['email'] && email?.touched">Enter valid email.</small>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-phone-alt"></i>
+                            </span>
+                        </div>
+                        <input type="number" name="Mobile" id="mobile" class="form-control" placeholder="Mobile" formControlName="mobile" 
+                        [(ngModel)]="user.Mobile" [class.is-invalid]="mobile?.invalid && mobile?.touched">
+                    </div>
+                    <small class="text-danger" *ngIf="mobile?.invalid && mobile?.touched">Mobile number is required.</small>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                        <input type="password" name="Password" id="pass" class="form-control" placeholder="Password" formControlName="password" 
+                        [(ngModel)]="user.Password" [class.is-invalid]="password?.invalid && password?.touched">
+                    </div>
+                    <small class="text-danger" *ngIf="password?.invalid && password?.touched">Password is required.</small>
+                </div>
+                <button type="submit" class="btn btn-dark form-control register" [disabled]="myForm.invalid">Register</button>
+            </form>
+            <button class="login">Already registered? Login here!</button>
+        </div>
+        <div class="col-lg-7 image">
+            <img src="./assets/book1.jpg" alt="">
+        </div>
+    </div>
+</div>

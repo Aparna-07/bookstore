@@ -1,0 +1,29 @@
+.option-item{
+    padding: 9px;
+    margin: 5px;
+    border-radius: 10px;
+    border: none;
+    transition: 0.3s all ease-in-out;
+    color: rgba(0, 0, 0, 0.700);
+}
+.navbar{
+    background-color: #efefef !important;
+    box-shadow: 2px 2px #d7cec7;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.option-item:hover{
+    background-color: #d7cec790;
+}
+
+.navbar-brand> i{
+    font-size: 1.9rem;
+    line-height: 20px;
+    vertical-align: middle;
+    color: rgba(0, 0, 0, 0.750);
+}
+.navbar-brand> span{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.750);
+}

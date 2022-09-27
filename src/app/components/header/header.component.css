@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+div{
+    background-color: #d7cec790;
+    margin-bottom: 0px;
+    font-family: 'Open Sans', cursive;
+    padding: 30px;
+ }
+
+ a{
+    transition: all 200ms ease;
+ }
+ a:hover{
+    background-color: #d85c27;
+    border: none;
+ }

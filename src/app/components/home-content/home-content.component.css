@@ -1,0 +1,37 @@
+.body{
+    background-color: #efefef;
+    margin: 0px;
+}
+
+.featured, .categories{
+    padding: 20px;
+}
+.title{
+    background-color: #d7cec7;
+    width: 220px;
+    padding: 10px;
+    color: rgba(0, 0, 0, 0.700);
+    text-align: center;
+    clip-path: polygon(0% 0%, 100% 0%, 93% 50%, 100% 100%, 0% 100%, 7% 50%);
+    margin: auto;
+}
+
+.small-tag{
+    width: fit-content;
+    padding: 5px 15px;
+    color: #efefef;
+    background-color: #d85c27;
+    clip-path: polygon(0% 0%, 100% 0%, 93% 50%, 100% 100%, 0% 100%, 0% 50%);
+}
+.card{
+    border-radius: 7px;
+}
+
+.card a{
+    transition: all 200ms ease-in-out;
+}
+
+.card a:hover{
+    background-color: #d85c27;
+    border: none;
+}

@@ -23,32 +23,79 @@
             </li>
         </ul>
         <div class="options">
-            <span class="dropdown">
-                <button class="wishlist option-item dropdown-toggle" data-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-heart"></i></button>
-                <div class="dropdown-menu">
-                    <span class="dropdown-item">
-                    </span>
-                </div>
-            </span>
+            <button class="wishlist option-item" routerLink="/wishlist"><i class="fas fa-heart"></i></button>
+
+            <button class="cart option-item" routerLink="/cart"><i class="fas fa-cart-arrow-down"></i></button>
 
             <span class="dropdown">
-                <button class="cart option-item dropdown-toggle" data-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-cart-arrow-down"></i></button>
+                <button class="user option-item" data-toggle="dropdown" aria-expanded="false"><i
+                        class="fas fa-user"></i></button>
                 <div class="dropdown-menu">
-                    <span class="dropdown-item">
-                    </span>
-                </div>
-            </span>
-
-            <span class="dropdown">
-                <button class="user option-item dropdown-toggle" data-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-user"></i></button>
-                <div class="dropdown-menu">
-                    <span class="dropdown-item">
-                    </span>
+                    <div class="dropdown-item user-details">
+                        <h5>Hello {{userName}},</h5>
+                        <p>Email: {{email}}</p>
+                        <div class="dropdown-divider"></div>
+                        <p><a class="btn" routerLink="/cart">Your cart</a></p>
+                        <p><a class="btn" routerLink="/wishlist">Your wishlist</a></p>
+                        <p><a class="btn" routerLink="/orders">Your orders</a></p>
+                        <p><a class="btn" data-toggle="modal" data-target="#addrForm">Edit shipping address</a></p>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a class="btn btn-block logout dropdown-item text-center" (click)="logout()">Logout</a>
                 </div>
             </span>
         </div>
-    </div>
+    </div> 
 </nav>
+
+
+
+
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="addrForm" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addrFormLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addrFormLabel">Add Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body m-auto">
+          <form [formGroup]="myAddressForm">
+            <table>           
+                <tr>
+                    <td><label for="building">Building: &nbsp;</label></td>
+                    <td><input type="text" name="building" id="building" class="form-control" formControlName="Building"></td>
+                </tr>
+                <tr><td colspan="2"><br /></td></tr>
+                <tr>
+                    <td><label for="city">City: &nbsp;</label></td>
+                    <td><input type="text" name="city" id="city" class="form-control" formControlName="City"></td>
+                </tr>
+                <tr><td colspan="2"><br /></td></tr>
+                <tr>
+                    <td><label for="country">Country: &nbsp;</label></td>
+                    <td><input type="text" name="country" id="country" class="form-control" formControlName="Country"></td>
+                </tr>
+                <tr><td colspan="2"><br /></td></tr>
+                <tr>
+                    <td><label for="pincode">Pincode: &nbsp;</label></td>
+                    <td><input type="number" name="pincode" id="pincode" class="form-control" formControlName="Pincode"></td>
+                </tr>
+                <tr><td colspan="2"><br /></td></tr>
+                <tr>
+                    <td><label for="userId">User Id: &nbsp;</label></td>
+                    <td><input type="number" name="userId" id="userId" class="form-control" readonly [value]="userId" formControlName="UserId"></td>
+                </tr>             
+            </table>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn" style="background-color: #d85c27; color:white" (click)="updateAddress()">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>

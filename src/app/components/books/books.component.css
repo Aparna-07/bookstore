@@ -1,0 +1,98 @@
+.row>*{
+    margin: 0px;
+    padding: 0px;
+}
+.featured{
+    padding: 20px;
+}
+.title{
+    background-color: #d7cec7;
+    width: 220px;
+    padding: 10px;
+    color: rgba(0, 0, 0, 0.700);
+    text-align: center;
+    clip-path: polygon(0% 0%, 100% 0%, 93% 50%, 100% 100%, 0% 100%, 7% 50%);
+    margin: 20px;
+}
+.title-wrap{
+    display: flex;
+    justify-content: center;
+}
+.card{
+    border-radius: 7px;
+}
+
+.card a{
+    background-color: #d85c27;
+    border: none;
+    color: white;
+    transition: all 300ms ease-in;
+}
+
+.card a:hover{
+    background-color: white;
+    border: 1px solid #d85c27;
+    color: black;
+}
+.books{
+    padding-bottom: 20px;
+}
+.book-item{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    margin-left: 80px;
+}
+
+.book-item img{
+    height: 18rem;
+    width: 16rem;
+    border-radius: 10px;
+    margin-top: 10px !important;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+
+.wrapper{
+    height: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.heading {
+    padding: 15px;
+    color: rgba(0, 0, 0, 0.700);
+}
+
+.badge {
+    background-color: #d85c27;
+    color: white;
+}
+
+.active{
+    background-color: #d7cec7;
+    border:none;
+    color: rgba(0, 0, 0, 0.700);
+    font-weight: 600;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
+    text-align: center;
+    background-color: #d7cec760;
+    width: 100%;
+}
+.container-fluid{
+    padding-left: 0px;
+    padding-right: 0px;
+    box-sizing: border-box;
+}
+.product-bar{
+    box-sizing: border-box;
+}

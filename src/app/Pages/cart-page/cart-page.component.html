@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+<div class="book container-fluid">
+    <div class="card text-center empty-cart" *ngIf="empty">
+        <img src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png" class="card-img-top m-auto">
+        <div class="card-body">
+            <h3 class="card-title">Your cart is empty</h3>
+            <p class="card-text">Looks like you haven't added anything to the cart yet.<br /> Go ahead and explore top categories.</p>
+            <a routerLink="/books" class="btn btn-lg">Shop now</a>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="!empty">
+        <div class="col-lg-9">
+            <div class="row">
+                <div class="col-lg-10">
+                    <h4 class="cart-title">Shopping Cart</h4>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="cart-title">Price</h5>
+                </div>
+            </div>
+            <hr>
+            <ng-container *ngFor="let book of books">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <img [src]="book.Image" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-lg-7">
+                        <h4 class="title" routerLink="/details/{{book.BookId}}">{{book.Title}}</h4>
+                        <h5 class="released">By <span class="text-danger">{{book.Author}}</span></h5>
+                        <br>
+                        <p class="text-success">In stock</p>
+                        <p class="text-success">Free shipping</p>
+                        <p>
+                            <span>Qty: <input #myQty type="number" min="1" (input)="qtyChanged(myQty, book.BookId)"
+                                    [value]="qty.get(book.BookId)" class="qtyInput"> </span> |
+                            <a class="delete btn" (click)="deleteCart(book.BookId)">Delete</a>
+                        </p>
+                    </div>
+                    <h5 class="col-lg-2 text-danger">
+                        {{book.Price | currency:'INR'}}
+                    </h5>
+                </div>
+                <hr>
+            </ng-container>
+        </div>
+        <div class="col-lg-3 m-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Subtotal ({{itemCount}} items) : <span class="text-danger">{{subtotal |
+                            currency:'INR'}}</span></h5>
+                    <div class="coupons" *ngIf="couponCount>0">
+                        <label for="coupon">Available coupons</label>
+                        <select name="coupon" id="coupon" class="form-control" (change)="couponSelected(myCoupon.value)"
+                            #myCoupon>
+                            <option selected disabled>--Apply discount coupon--</option>
+                            <option *ngFor="let coupon of coupons">{{coupon.Code}}</option>
+                        </select>
+                    </div>
+                    <div class="discount" *ngIf="selectedCoupon">
+                        <h5 class="card-title">Discount: <span class="text-danger"> -{{selectedCoupon.Discount |
+                                currency:'INR'}}</span></h5>
+                        <h5 class="card-title">New Subtotal : <span class="text-danger">{{subtotal |
+                                currency:'INR'}}</span></h5>
+                    </div>
+                    <a class="btn btn-block checkout" (click)="checkout()">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

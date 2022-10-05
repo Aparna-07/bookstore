@@ -1,4 +1,5 @@
-.row>*{
-    margin: 0px;
-    padding: 0px;
+.books{
+    width: 99vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }

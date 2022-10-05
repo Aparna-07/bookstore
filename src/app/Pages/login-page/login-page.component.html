@@ -6,6 +6,9 @@
             <br />
             <br />
             <form [formGroup]="myForm" (submit)="Login()">
+                <div class="text-center alert {{ loginClass }}" role="alert">
+                    {{ loginResponse }}
+                </div>
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -33,7 +36,7 @@
                 </div>
                 <button type="submit" class="btn btn-dark form-control login" [disabled]="myForm.invalid">Login</button>
             </form>
-            <button class="register">New User? Register here!</button>
+            <button class="register" routerLink="/register">New User? Register here!</button>
         </div>
         <div class="col-lg-7 image">
             <img src="./assets/book3.jpg" alt="">

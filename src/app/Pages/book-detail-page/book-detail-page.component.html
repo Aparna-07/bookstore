@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<div class="details-wrapper">
+    <div class="header">
+        <button class="fas fa-arrow-left previous" routerLink="/books"> Go back</button>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <img [src]="book.Image" class="img-fluid" alt="book">
+            </div>
+            <div class="col details">
+                <h3 class="title">{{book.Title}}</h3>
+                <h5 class="released">By <span class="text-danger">{{book.Author}}</span> | Released: {{book.Year}}</h5>
+                <br>
+                <hr><br>
+                <p class="price text-danger">{{book.Price | currency:'INR'}}</p>
+                <p class="text-success">Available</p>
+                <p>Ships within <span style="font-weight:600;">3-4 Business Days</span></p>
+                <br><br>
+                <div class="buttons">
+                    <form action="" (submit)="addToCart()" [formGroup]="myCartForm">
+                        <div class="qty-group">
+                            <label for="qty">Qty: </label>
+                            <input type="number" id="qty" value="1" min="1" oninput="validity.valid ||(value='1');"
+                                class="qty form-control" formControlName="qty">
+                        </div>
+                        <button type="submit" class="btn cart">Add to Cart</button>
+                    </form>
+                    <button type="button" class="btn wishlist" (click)="addToWishlist()">Add to Wishlist</button>
+                </div>
+                <div class="about">
+                    <h5 class="text-danger">About the Book</h5>
+                    <p>{{book.Description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+    <div class="book container">
+        <h4 class="cart-title text-center">Your Orders</h4>
+        <hr>
+        <ng-container *ngFor="let order of orders">
+            <div class="order-wrapper">
+                <div class="row order-details text-center">
+                    <div class="col-lg-4">
+                        <h5>Order ID: {{order.OrderId}}</h5>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5>Ordered on: {{order.OrderDate | date}}</h5>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5>Subtotal: {{order.Amount}}</h5>
+                    </div>
+                </div>
+                <ng-container *ngFor="let book of books.get(order.OrderId)">
+                    <div class="row">
+                        <div class="col-lg-4 text-center">
+                            <img [src]="book.Image" alt="" class="img-fluid">
+                        </div>
+                        <div class="col-lg-8">
+                            <h4 class="title" routerLink="/details/{{book.BookId}}">{{book.Title}}</h4>
+                            <h5 class="released">By <span class="text-danger">{{book.Author}}</span> | Released:
+                                {{book.Year}}</h5>
+                            <br>
+                            <p class="price text-danger">{{book.Price | currency:'INR'}}</p>
+                            <p>Units ordered: {{qty.get(book.BookId)}}</p>
+                            <br>
+                        </div>
+                    </div>
+                    <hr />
+                </ng-container>
+            </div>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <i class="fas fa-book-open"></i>
+        <span> The BookShop</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll"
+        aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav m-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/admin/books" routerLinkActive="active">Books</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/admin/coupons" routerLinkActive="active">Coupons</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/admin/categories" routerLinkActive="active">Categories</a>
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/admin/orders" routerLinkActive="active">Orders</a>
+            </li> 
+        </ul>
+        <div class="options">
+            <span class="dropdown">
+                <button class="user option-item" data-toggle="dropdown"
+                    aria-expanded="false"><i class="fas fa-user"></i></button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item user-details">
+                            <h5>Hello {{userName}},</h5>
+                            <p>Email: {{email}}</p>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="btn btn-block logout dropdown-item text-center" (click)="logout()">Logout</a>
+                    </div>
+            </span>
+        </div>
+    </div>
+</nav>

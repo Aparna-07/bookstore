@@ -6,6 +6,9 @@
             <br />
             <br />
             <form [formGroup]="myForm" (submit)="Register()">
+                <div class="text-center alert {{registerClass}}" role="alert">
+                    {{ registerResponse }}
+                </div>
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -57,7 +60,7 @@
                 </div>
                 <button type="submit" class="btn btn-dark form-control register" [disabled]="myForm.invalid">Register</button>
             </form>
-            <button class="login">Already registered? Login here!</button>
+            <button class="login" routerLink="/login">Already registered? Login here!</button>
         </div>
         <div class="col-lg-7 image">
             <img src="./assets/book1.jpg" alt="">

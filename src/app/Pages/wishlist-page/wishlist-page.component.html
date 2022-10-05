@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+    <div class="card text-center empty-cart" *ngIf="empty">
+        <img src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png" class="card-img-top m-auto">
+        <div class="card-body">
+            <h3 class="card-title">Your wishlist is empty</h3>
+            <p class="card-text">Looks like you haven't found anything you like yet.<br /> Go ahead and explore top categories.</p>
+            <a routerLink="/books" class="btn btn-lg">Shop now</a>
+        </div>
+    </div>
+
+    <div class="book container-fluid" *ngIf="!empty">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-8">
+                <h4 class="cart-title">Wishlist</h4>
+            </div>
+            <div class="col-lg-2">
+                <h5 class="cart-title">Price</h5>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+        <hr>
+        <ng-container *ngFor="let book of books">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2">
+                    <img [src]="book.Image" alt="" class="img-fluid">
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="title" routerLink="/details/{{book.BookId}}">{{book.Title}}</h4>
+                    <h5 class="released">By <span class="text-danger">{{book.Author}}</span></h5>
+                    <br>
+                    <p class="text-success">In stock</p>
+                    <p class="text-success">Free shipping</p>
+                    <a class="btn delete" (click)="deleteWishlist(book.BookId)">Delete</a>
+                </div>
+                <h5 class="col-lg-2 text-danger">
+                    {{book.Price | currency:'INR'}}
+                </h5>
+                <div class="col-lg-1"></div>
+            </div>
+            <hr>
+        </ng-container>
+    </div>
+</div>

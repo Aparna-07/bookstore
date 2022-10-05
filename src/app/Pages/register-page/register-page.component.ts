@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { User } from 'src/app/Models/user.model';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register-page',
@@ -10,7 +12,10 @@ import { User } from 'src/app/Models/user.model';
 export class RegisterPageComponent implements OnInit {
 
   user = new User();
-  constructor(private fb:FormBuilder) { }
+  registerResponse:any;
+  registerClass:any;
+
+  constructor(private fb:FormBuilder, private auth:AuthService, private router: Router) { }
 
   myForm =  this.fb.group(
     {
@@ -37,7 +42,14 @@ export class RegisterPageComponent implements OnInit {
   }
 
   Register(){
-    console.log(this.user);
+    this.auth.register(this.user).subscribe((response)=>{
+      this.router.navigateByUrl('login');
+    },
+    (error)=>{
+      this.registerResponse = "Registration failed, try again!";
+      this.registerClass = "alert-danger";
+    }
+    )
   }
 
 }

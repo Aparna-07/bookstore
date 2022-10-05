@@ -1,14 +1,60 @@
-<div class="books">
-        <h3 class="title">Categories</h3>
-        <div class="category-item">
-            <div class="card text-center" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Book name</h5>
-                    <p class="card-text">By Author1</p>
-                    <p class="card-text">Price: 10</p>
-                    <a href="#" class="btn btn-outline-dark">View Book</a>
+<div class="container-fluid">
+    <div class="header">
+        <form [formGroup]="mySearchForm" class="form-inline my-2 my-lg-0" (submit)="searchSubmit()">
+            <label for="searchBy" class="form-control mr-sm-2">Search by: </label>
+            <select name="searchBy" id="searchBy" class="form-control mr-sm-2" formControlName="searchBy">
+                <option value="Title">Name</option>
+                <option value="Author">Author</option>
+                <option value="CategoryName">Category</option>
+                <option value="ISBN">ISBN</option>
+            </select>
+            <input class="form-control mr-sm-2" type="search" placeholder="Type here..." aria-label="Search" required
+                formControlName="search">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit"
+                [disabled]="mySearchForm.invalid">Search</button>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-3 sidebar">
+            <div class="wrapper">
+                <h5 class="text-center heading">Categories</h5>
+                <div class="list-group">
+                    <button
+                        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                        [class.active]="selectedCat==-1" (click)="catSelected(-1)">
+                        All books
+                        <span class="badge badge-pill">{{totalBadge}}</span>
+                    </button>
+                    <button
+                        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                        [class.active]="selectedCat==i" *ngFor="let cat of categories;index as i" (click)="catSelected(i)">
+                        {{cat.CategoryName}}
+                        <span class="badge badge-pill">{{badge.get(cat.CategoryId)}}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 product-bar">
+            <div class="books">
+                <div class="title-wrap">
+                    <h3 class="title">Books</h3>
+                </div>
+                <div class="book-item">
+                    <div class="card text-center" style="width: 18rem;" *ngFor="let book of books">
+                        <img [src]="book.Image" class="card-img-top m-auto" alt="book image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{book.Title}}</h5>
+                            <h5>({{book.Year}})</h5>
+                            <small>By {{book.Author}}</small>
+                            <br />
+                            <h5 class="text-danger">{{book.Price | currency:'INR'}}</h5>
+                            <br />
+                            <a routerLink="/details/{{book.BookId}}" class="btn">View Book</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

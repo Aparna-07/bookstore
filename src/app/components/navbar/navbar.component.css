@@ -12,9 +12,6 @@
     padding-top: 15px;
     padding-bottom: 15px;
 }
-.option-item:hover{
-    background-color: #d7cec790;
-}
 
 .navbar-brand> i{
     font-size: 1.9rem;
@@ -26,4 +23,27 @@
     font-size: 1.4rem;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.750);
+}
+
+.logout, .checkout{
+    background-color: #d85c27;
+    color: white;
+}
+
+.dropdown-menu{
+    position: absolute;
+    left: auto;
+    right: 10px;
+    top:auto;
+    padding: 15px;
+    width: fit-content;
+}
+
+.user-details .btn{
+    padding: 0px !important;
+    color: rgb(180, 4, 4);
+}
+
+.user-details:hover{
+    background-color: white !important;
 }

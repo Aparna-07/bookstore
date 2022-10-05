@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Credentials } from 'src/app/Models/user.model';
+import { Router } from '@angular/router';
+import { Credentials, User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -9,8 +11,20 @@ import { Credentials } from 'src/app/Models/user.model';
 })
 export class LoginPageComponent implements OnInit {
 
+  loginResponse:any;
+  loginClass:any;
+
   cred = new Credentials();
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder, private auth:AuthService, private router: Router) { 
+    if(localStorage.getItem("user")){
+      if(localStorage.getItem("admin")){
+        router.navigateByUrl('admin');
+      }
+      else{
+        router.navigateByUrl('home');
+      }
+    }
+  }
 
   myForm =  this.fb.group(
     {
@@ -29,7 +43,28 @@ export class LoginPageComponent implements OnInit {
   }
 
   Login(){
-    console.log(this.cred);
+    this.auth.login(this.cred).subscribe((response:any)=>{
+      if(response!=null){
+        this.loginResponse='Login successful!';
+        this.loginClass = 'alert-success';
+        localStorage.setItem("user", JSON.stringify(response));
+        this.auth.checkAdmin(response.Email).subscribe((value:any)=>{
+          console.log(value);
+          if(value==true){
+              this.router.navigateByUrl('admin');
+              localStorage.setItem("admin", "true");
+          }
+            else{
+              this.router.navigateByUrl('home');
+              localStorage.setItem("admin", "false");
+            }
+        })
+      }
+    },
+    (error)=>{
+      this.loginResponse='Incorrect email or password';
+      this.loginClass = 'alert-danger';
+    });
   }
 
 }

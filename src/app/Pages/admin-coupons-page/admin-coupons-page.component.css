@@ -18,7 +18,7 @@ td>button{
     margin: 3rem;
     margin-top: 20px;
     border-radius: 10px;
-    border: 1px solid gray;
+    box-shadow: 2px 2px 2px #d7cec7;
     box-sizing: border-box;
 }
 .title{
@@ -33,4 +33,8 @@ td>button{
 .title-wrap{
     display: flex;
     justify-content: center;
+}
+.wrapper td, .wrapper th{
+    padding: 15px;
+    vertical-align: middle;
 }

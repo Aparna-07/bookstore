@@ -11,6 +11,12 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class AdminBooksPageComponent implements OnInit {
   books:any;
+  allBooks:any;
+
+  mySearchForm = this.fb.group({
+    search: [, [Validators.required]]
+  });
+
   myBookEditForm = this.fb.group({
     BookId:[, [Validators.required]],
     CategoryId:[, [Validators.required]],
@@ -40,17 +46,18 @@ export class AdminBooksPageComponent implements OnInit {
   });
 
   constructor(private dataService:DataService, private fb:FormBuilder, private datePipe:DatePipe, private activatedRoute: ActivatedRoute) {
+
+    dataService.getAllBooks().subscribe((response)=>{
+      this.books = response;
+      this.allBooks = response;
+    });
+
     let id = activatedRoute.snapshot.paramMap.get('id');
     if (id) {
-      console.log(id);
       dataService.getBookByCatId(id as unknown as number).subscribe((response: any) => {
         this.books = response;
       });
     }
-    else {
-    dataService.getAllBooks().subscribe((response)=>{
-      this.books = response;
-    });}
    }
 
    editFormClicked(book:any){
@@ -86,6 +93,17 @@ export class AdminBooksPageComponent implements OnInit {
     this.dataService.deleteBook(id).subscribe((response)=>{
       window.location.reload();
     });
+  }
+
+  searchSubmit() {
+    if (this.mySearchForm.value.search) {
+      this.dataService.getBookBySearch('Title', this.mySearchForm.value.search)?.subscribe((response: any) => {
+        this.books = response;
+      });
+    }
+    else {
+      this.books = this.allBooks;
+    }
   }
 
 }

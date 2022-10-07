@@ -18,14 +18,10 @@ td>button{
     margin: 3rem;
     margin-top: 20px;
     border-radius: 10px;
+    box-shadow: 2px 2px 2px #d7cec7;
     width: 99w;
     overflow-x: scroll;
     box-sizing: border-box;
-}
-
-.view-table{
-    border-radius: 10px;
-    box-shadow: 2px 2px 2px #d7cec7;
 }
 
 .title{
@@ -37,10 +33,6 @@ td>button{
     clip-path: polygon(0% 0%, 100% 0%, 93% 50%, 100% 100%, 0% 100%, 7% 50%);
     margin: 20px;
 }
-.title-wrap{
-    display: flex;
-    justify-content: center;
-}
 
 .view-table tr>*{
     width: 10vw;
@@ -51,4 +43,8 @@ td>button{
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
     overflow: hidden;
+}
+.search{
+    padding: 10px;
+    margin: 20px;
 }

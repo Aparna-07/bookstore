@@ -5,22 +5,22 @@
 <div class="wrapper">
     <table class="table table-striped table-hover">
         <thead class="thead-dark">
-            <th>Order ID</th>
+            <th class="text-center">Order ID</th>
             <th>Order Date</th>
-            <th>User ID</th>
+            <th class="text-center">User ID</th>
             <th>Title</th>
             <th>Author</th>
-            <th>Qty</th>
+            <th class="text-center">Qty</th>
         </thead>
         <tbody>
             <ng-container *ngFor="let order of orders">
                 <tr *ngFor="let book of books.get(order.OrderId)">
-                    <td>{{order.OrderId}}</td>
+                    <td class="text-center">{{order.OrderId}}</td>
                     <td>{{order.OrderDate | date:'mediumDate'}}</td>
-                    <td>{{order.UserId}}</td>
+                    <td class="text-center">{{order.UserId}}</td>
                     <td>{{book.Title}}</td>
                     <td>{{book.Author}}</td>
-                    <td>{{qty.get(book.BookId)}}</td>
+                    <td class="text-center">{{qty.get(book.BookId)}}</td>
                 </tr>
             </ng-container>
         </tbody>

@@ -1,8 +1,8 @@
 
 .wrapper{
-    padding: 10px;
+    margin: 3rem;
     border-radius: 10px;
-    border: 1px solid gray;
+    box-shadow: 2px 2px 2px #d7cec7;
     box-sizing: border-box;
     width: fit-content;
 }

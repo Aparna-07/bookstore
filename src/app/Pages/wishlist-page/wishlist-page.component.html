@@ -1,10 +1,12 @@
 <app-navbar></app-navbar>
 <div class="wrapper">
     <div class="card text-center empty-cart" *ngIf="empty">
-        <img src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png" class="card-img-top m-auto">
+        <img src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png"
+            class="card-img-top m-auto">
         <div class="card-body">
             <h3 class="card-title">Your wishlist is empty</h3>
-            <p class="card-text">Looks like you haven't found anything you like yet.<br /> Go ahead and explore top categories.</p>
+            <p class="card-text">Looks like you haven't found anything you like yet.<br /> Go ahead and explore top
+                categories.</p>
             <a routerLink="/books" class="btn btn-lg">Shop now</a>
         </div>
     </div>
@@ -33,7 +35,8 @@
                     <br>
                     <p class="text-success">In stock</p>
                     <p class="text-success">Free shipping</p>
-                    <a class="btn delete" (click)="deleteWishlist(book.BookId)">Delete</a>
+                    <a class="btn delete" (click)="deleteWishlist(book.BookId)">Delete</a> | <a class="btn delete"
+                        (click)="moveToCart(book.BookId)">Move to Cart</a>
                 </div>
                 <h5 class="col-lg-2 text-danger">
                     {{book.Price | currency:'INR'}}

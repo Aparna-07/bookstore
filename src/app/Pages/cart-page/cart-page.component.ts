@@ -13,6 +13,7 @@ export class CartPageComponent implements OnInit {
   cart:any
   qty = new Map();
   subtotal:any;
+  newSubtotal:any;
   itemCount:number=0;
   userId:any;
   coupons:any;
@@ -20,6 +21,7 @@ export class CartPageComponent implements OnInit {
   couponCount:any;
   orderId:any;
   empty:boolean = false;
+  orderPlaced:boolean=false;
 
   constructor(private dataService:DataService, private datePipe:DatePipe) {
     this.userId = JSON.parse(localStorage.getItem("user")!).UserId;
@@ -87,7 +89,7 @@ export class CartPageComponent implements OnInit {
    couponSelected(value:any){
     this.dataService.getCouponByCode(value).subscribe((response:any)=>{
       this.selectedCoupon=response;
-      this.subtotal -= response.Discount;
+      this.newSubtotal = this.subtotal - response.Discount;
     })
    }
 
@@ -95,7 +97,7 @@ export class CartPageComponent implements OnInit {
     let today = new Date();
     let order={
       "OrderDate": this.datePipe.transform(today, 'yyyy-MM-dd'),
-      "Amount": this.subtotal,
+      "Amount": this.newSubtotal,
       "UserId": this.userId
     };
     this.dataService.addOrder(order).subscribe((response)=>{
@@ -109,7 +111,8 @@ export class CartPageComponent implements OnInit {
         this.dataService.addOrderItem(item).subscribe();
       });
       this.dataService.deleteWholeCart(this.userId).subscribe(()=>{
-        window.location.reload();
+        this.empty=true;
+        this.orderPlaced=true;
       }); 
     });
   }

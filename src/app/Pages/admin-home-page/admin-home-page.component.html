@@ -7,7 +7,7 @@
             <a class="btn see-all" routerLink="/admin/categories">See all <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="category-item">
-            <div class="card text-center" style="width: 18rem;" *ngFor="let cat of categories; index as i">
+            <div class="card text-center" style="width: 18rem;" *ngFor="let cat of categories; index as i" (click)="catSelected(cat.CategoryId)">
                 <img [src]="cat.Image" class="card-img-top" alt="cat image">
                 <div class="card-body">
                     <h5 class="card-title">{{cat.CategoryName}}</h5>
@@ -38,6 +38,14 @@
                 <h5 style="color: rgba(0, 0, 0, 0.700);" class="card-text">{{orderCount}} Orders</h5>
                 <br />
                 <a routerLink="/admin/orders" class="btn edit-btn">View orders</a>
+            </div>
+        </div>
+        <div class="card text-center m-auto" style="width: 16rem;">
+            <div class="card-body">
+                <h3 class="card-title">Users</h3>
+                <h5 style="color: rgba(0, 0, 0, 0.700);" class="card-text">{{userCount}} Users</h5>
+                <br />
+                <a routerLink="/admin/users" class="btn edit-btn">Manage Users</a>
             </div>
         </div>
     </div>

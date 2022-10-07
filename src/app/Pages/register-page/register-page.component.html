@@ -16,8 +16,8 @@
                                 <i class="fas fa-user"></i>
                             </span>
                         </div>
-                        <input type="text" name="UserName" id="name" class="form-control" placeholder="Name" formControlName="name"
-                         [(ngModel)]="user.UserName" [class.is-invalid]="name?.invalid && name?.touched">
+                        <input type="text" name="UserName" id="name" class="form-control" placeholder="Name" formControlName="UserName"
+                         [class.is-invalid]="name?.invalid && name?.touched">
                     </div>
                     <small class="text-danger" *ngIf="name?.invalid && name?.touched">Name is required.</small>
                 </div>
@@ -28,8 +28,8 @@
                                 <i class="fas fa-envelope"></i>
                             </span>
                         </div>
-                        <input type="email" name="Email" id="email" class="form-control" placeholder="Email" formControlName="email"
-                         [(ngModel)]="user.Email" [class.is-invalid]="email?.invalid && email?.touched">
+                        <input type="email" name="Email" id="email" class="form-control" placeholder="Email" formControlName="Email"
+                         [class.is-invalid]="email?.invalid && email?.touched">
                     </div>
                     <small class="text-danger" *ngIf="email?.errors?.['required'] && email?.touched">Email is required.</small>
                     <small class="text-danger" *ngIf="email?.errors?.['email'] && email?.touched">Enter valid email.</small>
@@ -41,8 +41,8 @@
                                 <i class="fas fa-phone-alt"></i>
                             </span>
                         </div>
-                        <input type="number" name="Mobile" id="mobile" class="form-control" placeholder="Mobile" formControlName="mobile" 
-                        [(ngModel)]="user.Mobile" [class.is-invalid]="mobile?.invalid && mobile?.touched">
+                        <input type="number" name="Mobile" id="mobile" class="form-control" placeholder="Mobile" formControlName="Mobile" 
+                         [class.is-invalid]="mobile?.invalid && mobile?.touched">
                     </div>
                     <small class="text-danger" *ngIf="mobile?.invalid && mobile?.touched">Mobile number is required.</small>
                 </div>
@@ -53,8 +53,8 @@
                                 <i class="fas fa-lock"></i>
                             </span>
                         </div>
-                        <input type="password" name="Password" id="pass" class="form-control" placeholder="Password" formControlName="password" 
-                        [(ngModel)]="user.Password" [class.is-invalid]="password?.invalid && password?.touched">
+                        <input type="password" name="Password" id="pass" class="form-control" placeholder="Password" formControlName="Password" 
+                         [class.is-invalid]="password?.invalid && password?.touched">
                     </div>
                     <small class="text-danger" *ngIf="password?.invalid && password?.touched">Password is required.</small>
                 </div>

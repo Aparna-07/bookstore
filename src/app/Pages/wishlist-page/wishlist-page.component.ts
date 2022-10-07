@@ -36,6 +36,22 @@ export class WishlistPageComponent implements OnInit {
       window.location.reload();
     })
   }
+
+  moveToCart(bookId: any) {
+    let wishlist = {
+      "UserId": JSON.parse(localStorage.getItem("user")!).UserId,
+      "BookId": bookId
+    }
+    let cart = {
+      "UserId": JSON.parse(localStorage.getItem("user")!).UserId,
+      "BookId": bookId,
+      "Qty": 1
+    }
+    this.dataService.addToCart(cart).subscribe();
+    this.dataService.deleteFromWishlist(wishlist).subscribe((response: any) => {
+      window.location.reload();
+    });
+  }
   ngOnInit(): void {
   }
 

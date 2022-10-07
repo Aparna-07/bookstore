@@ -26,6 +26,10 @@ export class HomeContentComponent implements OnInit {
     });
   }
 
+  catSelected(id:any){
+    this.router.navigate(['books', {id:id}]);
+  }
+
   ngOnInit(): void {
   }
 

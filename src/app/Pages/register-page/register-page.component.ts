@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,7 +10,6 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterPageComponent implements OnInit {
 
-  user = new User();
   registerResponse:any;
   registerClass:any;
 
@@ -19,37 +17,40 @@ export class RegisterPageComponent implements OnInit {
 
   myForm =  this.fb.group(
     {
-      name:[null, [Validators.required]],
-      email:[null, [Validators.required, Validators.email]],
-      mobile:[null, [Validators.required]],
-      password:[null, [Validators.required]]
+      UserId:[],
+      UserName:[null, [Validators.required]],
+      Email:[null, [Validators.required, Validators.email]],
+      Mobile:[null, [Validators.required]],
+      Password:[null, [Validators.required]],
+      IsActive:[1],
+      IsAdmin:[0]
     }
   )
 
   get name(){
-    return this.myForm.get('name');
+    return this.myForm.get('UserName');
   }
   get email(){
-    return this.myForm.get('email');
+    return this.myForm.get('Email');
   }
   get mobile(){
-    return this.myForm.get('mobile');
+    return this.myForm.get('Mobile');
   }
   get password(){
-    return this.myForm.get('password');
+    return this.myForm.get('Password');
   }
   ngOnInit(): void {
   }
 
   Register(){
-    this.auth.register(this.user).subscribe((response)=>{
+    this.auth.register(this.myForm.value).subscribe((response)=>{
       this.router.navigateByUrl('login');
     },
     (error)=>{
       this.registerResponse = "Registration failed, try again!";
       this.registerClass = "alert-danger";
     }
-    )
+    );
   }
 
 }

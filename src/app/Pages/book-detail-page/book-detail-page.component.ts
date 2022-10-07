@@ -13,6 +13,8 @@ export class BookDetailPageComponent implements OnInit {
   id:any;
   book:any;
   qty:any
+  addedToCart:boolean=false;
+  addedToWishlist:boolean=false;
 
   myCartForm = this.fb.group({
     qty:[1]
@@ -38,7 +40,8 @@ export class BookDetailPageComponent implements OnInit {
     // this.dataService.addToCart(cart);
     this.dataService.addToCart(cart).subscribe((response:any)=>{
       console.log(response);
-    })
+    });
+    this.addedToCart=true;
   }
 
   addToWishlist(){
@@ -49,6 +52,7 @@ export class BookDetailPageComponent implements OnInit {
     // this.dataService.addToCart(cart);
     this.dataService.addToWishlist(wishlist).subscribe((response:any)=>{
       console.log(response);
-    })
+    });
+    this.addedToWishlist=true;
   }
 }

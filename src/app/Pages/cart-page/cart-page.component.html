@@ -1,5 +1,14 @@
 <app-navbar></app-navbar>
 <div class="book container-fluid">
+
+    <div class="card text-center" *ngIf="orderPlaced">
+        <div class="card-body alert alert-success">
+            <h3 class="card-title">Order placed, thank you!</h3>
+            <p class="card-text">Continue shopping.</p>
+            <a routerLink="/books" class="btn btn-lg btn-success">Shop now</a>
+        </div>
+    </div>
+
     <div class="card text-center empty-cart" *ngIf="empty">
         <img src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png" class="card-img-top m-auto">
         <div class="card-body">
@@ -60,7 +69,7 @@
                     <div class="discount" *ngIf="selectedCoupon">
                         <h5 class="card-title">Discount: <span class="text-danger"> -{{selectedCoupon.Discount |
                                 currency:'INR'}}</span></h5>
-                        <h5 class="card-title">New Subtotal : <span class="text-danger">{{subtotal |
+                        <h5 class="card-title">New Subtotal : <span class="text-danger">{{newSubtotal |
                                 currency:'INR'}}</span></h5>
                     </div>
                     <a class="btn btn-block checkout" (click)="checkout()">Checkout</a>

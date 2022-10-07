@@ -18,17 +18,26 @@ export class BooksComponent implements OnInit {
   selectedCat: any = -1;
   booksByCat = new Map();
 
-  constructor(private dataService: DataService, private fb: FormBuilder) {
+  constructor(private dataService: DataService, private fb: FormBuilder, private activatedRoute: ActivatedRoute) {
+    let id = activatedRoute.snapshot.paramMap.get('id');
     this.dataService.getAllBooks().subscribe((response: any) => {
-      if (response != null) {
-        this.books = response;
-        this.allBooks = response;
-      }
+      this.allBooks = response;
+      this.books = this.allBooks;
     });
-
+    if (id) {
+      dataService.getBookByCatId(id as unknown as number).subscribe((response: any) => {
+        this.books = response;
+      });
+    }
     this.dataService.getAllCategories().subscribe((response: any) => {
       if (response != null) {
         this.categories = response;
+        if (id) {
+          for (var i = 0; i < this.categories.length; i++) {
+            if (this.categories[i].CategoryId == id)
+              this.selectedCat = i;
+          }
+        }
         for (let i = 0; i < this.categories.length; i++) {
           this.dataService.getBookByCatId(this.categories[i].CategoryId).subscribe((response: any) => {
             if (response != null) {
@@ -64,14 +73,19 @@ export class BooksComponent implements OnInit {
   }
 
   searchSubmit() {
-    console.log(this.mySearchForm.value);
-    this.dataService.getBookBySearch(this.mySearchForm.value.searchBy, this.mySearchForm.value.search)?.subscribe((response: any) => {
-      this.selectedCat = -2;
-      if (this.mySearchForm.value.searchBy == "Title" || this.mySearchForm.value.searchBy == "ISBN")
-        this.books = [response];
-      else {
-        this.books = response;
-      }
-    });
+    console.log(this.mySearchForm.value.search);
+    if (this.mySearchForm.value.search) {
+      this.dataService.getBookBySearch(this.mySearchForm.value.searchBy, this.mySearchForm.value.search)?.subscribe((response: any) => {
+        this.selectedCat = -2;
+        if (this.mySearchForm.value.searchBy == "ISBN")
+          this.books = [response];
+        else {
+          this.books = response;
+        }
+      });
+    }
+    else {
+      this.catSelected(-1);
+    }
   }
 }

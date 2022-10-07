@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CouponAdminComponent } from './coupon-admin.component';
+import { AdminUsersPageComponent } from './admin-users-page.component';
 
-describe('CouponAdminComponent', () => {
-  let component: CouponAdminComponent;
-  let fixture: ComponentFixture<CouponAdminComponent>;
+describe('AdminUsersPageComponent', () => {
+  let component: AdminUsersPageComponent;
+  let fixture: ComponentFixture<AdminUsersPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CouponAdminComponent ]
+      declarations: [ AdminUsersPageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CouponAdminComponent);
+    fixture = TestBed.createComponent(AdminUsersPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

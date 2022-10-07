@@ -28,6 +28,12 @@
                     </form>
                     <button type="button" class="btn wishlist" (click)="addToWishlist()">Add to Wishlist</button>
                 </div>
+                <div class="alert alert-success m-4 text-center" *ngIf="addedToCart">
+                    <h5>Added to Cart</h5>
+                </div>
+                <div class="alert alert-success m-4 text-center" *ngIf="addedToWishlist">
+                    <h5>Added to Wishlist</h5>
+                </div>
                 <div class="about">
                     <h5 class="text-danger">About the Book</h5>
                     <p>{{book.Description}}</p>

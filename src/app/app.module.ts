@@ -14,10 +14,6 @@ import { BooksPageComponent } from './pages/books-page/books-page.component';
 import { BooksComponent } from './components/books/books.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
-import { CatAdminComponent } from './components/cat-admin/cat-admin.component';
-import { BookAdminComponent } from './components/book-admin/book-admin.component';
-import { CouponAdminComponent } from './components/coupon-admin/coupon-admin.component';
-import { OrdersAdminComponent } from './components/orders-admin/orders-admin.component';
 import { AdminHomePageComponent } from './pages/admin-home-page/admin-home-page.component';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
@@ -31,6 +27,7 @@ import { AdminBooksPageComponent } from './pages/admin-books-page/admin-books-pa
 import { AdminCouponsPageComponent } from './pages/admin-coupons-page/admin-coupons-page.component';
 import { AdminOrdersPageComponent } from './pages/admin-orders-page/admin-orders-page.component';
 import { AdminCategoriesPageComponent } from './pages/admin-categories-page/admin-categories-page.component';
+import { AdminUsersPageComponent } from './pages/admin-users-page/admin-users-page.component';
 
 @NgModule({
   declarations: [
@@ -45,10 +42,6 @@ import { AdminCategoriesPageComponent } from './pages/admin-categories-page/admi
     BooksComponent,
     AboutPageComponent,
     ContactPageComponent,
-    CatAdminComponent,
-    BookAdminComponent,
-    CouponAdminComponent,
-    OrdersAdminComponent,
     AdminHomePageComponent,
     AdminNavbarComponent,
     AdminHeaderComponent,
@@ -59,7 +52,8 @@ import { AdminCategoriesPageComponent } from './pages/admin-categories-page/admi
     AdminBooksPageComponent,
     AdminCouponsPageComponent,
     AdminOrdersPageComponent,
-    AdminCategoriesPageComponent
+    AdminCategoriesPageComponent,
+    AdminUsersPageComponent
       ],
   imports: [
     BrowserModule,

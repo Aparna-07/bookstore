@@ -13,8 +13,9 @@ export class AdminHomePageComponent implements OnInit {
   couponCount:number=0;
   bookCount:number=0;
   orderCount:number=0;
+  userCount:number=0;
 
-  constructor(private dataService:DataService) { 
+  constructor(private dataService:DataService, private router:Router) { 
     dataService.getAllCategories().subscribe((response:any)=>{
       if(response != null){
         this.categories = response;
@@ -33,7 +34,14 @@ export class AdminHomePageComponent implements OnInit {
       this.couponCount = response.length;
     });
 
+    dataService.getAllUsers().subscribe((response:any)=>{
+      this.userCount = response.length;
+    });
 }
+
+  catSelected(id:any){
+    this.router.navigate(['admin/books', {id:id}]);
+  }
 
   ngOnInit(): void {
   }

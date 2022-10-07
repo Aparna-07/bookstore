@@ -16,8 +16,8 @@
                                 <i class="fas fa-envelope"></i>
                             </span>
                         </div>
-                        <input type="email" name="Email" id="email" class="form-control" placeholder="Email" formControlName="email"
-                         [(ngModel)]="cred.Email" [class.is-invalid]="email?.invalid && email?.touched">
+                        <input type="email" name="Email" id="email" class="form-control" placeholder="Email" formControlName="Email"
+                        [class.is-invalid]="email?.invalid && email?.touched">
                     </div>
                     <small class="text-danger" *ngIf="email?.errors?.['required'] && email?.touched">Email is required.</small>
                     <small class="text-danger" *ngIf="email?.errors?.['email'] && email?.touched">Enter valid email.</small>
@@ -29,8 +29,8 @@
                                 <i class="fas fa-lock"></i>
                             </span>
                         </div>
-                        <input type="password" name="Password" id="pass" class="form-control" placeholder="Password" formControlName="password" 
-                        [(ngModel)]="cred.Password" [class.is-invalid]="password?.invalid && password?.touched">
+                        <input type="password" name="Password" id="pass" class="form-control" placeholder="Password" formControlName="Password" 
+                       [class.is-invalid]="password?.invalid && password?.touched">
                     </div>
                     <small class="text-danger" *ngIf="password?.invalid && password?.touched">Password is required.</small>
                 </div>

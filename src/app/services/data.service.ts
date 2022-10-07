@@ -159,4 +159,14 @@ export class DataService {
   insertCoupon(coupon:any){
     return this.http.post(this.baseUrl+'coupon', coupon);
   }
+  getAllUsers(){
+    return this.http.get(this.baseUrl+'auth');
+  }
+  activateUser(id:any){
+    return this.http.get(this.baseUrl+'auth/activate', {params:{userId:id}});
+  }
+  deactivateUser(id:any){
+    return this.http.get(this.baseUrl+'auth/deactivate', {params:{userId:id}});
+  }
 }
+

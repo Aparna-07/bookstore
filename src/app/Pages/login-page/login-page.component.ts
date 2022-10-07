@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Credentials, User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,60 +10,65 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  loginResponse:any;
-  loginClass:any;
+  loginResponse: any;
+  loginClass: any;
 
-  cred = new Credentials();
-  constructor(private fb:FormBuilder, private auth:AuthService, private router: Router) { 
-    if(localStorage.getItem("user")){
-      if(localStorage.getItem("admin")){
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
+    if (localStorage.getItem("user")) {
+      if (localStorage.getItem("admin")=='true') {
         router.navigateByUrl('admin');
       }
-      else{
+      else {
         router.navigateByUrl('home');
       }
     }
   }
 
-  myForm =  this.fb.group(
+  myForm = this.fb.group(
     {
-      email:[null, [Validators.required, Validators.email]],
-      password:[null, [Validators.required]]
+      Email: [null, [Validators.required, Validators.email]],
+      Password: [null, [Validators.required]]
     }
   )
 
-  get email(){
-    return this.myForm.get('email');
+  get email() {
+    return this.myForm.get('Email');
   }
-  get password(){
-    return this.myForm.get('password');
+  get password() {
+    return this.myForm.get('Password');
   }
   ngOnInit(): void {
   }
 
-  Login(){
-    this.auth.login(this.cred).subscribe((response:any)=>{
-      if(response!=null){
-        this.loginResponse='Login successful!';
+  Login() {
+    this.auth.login(this.myForm.value).subscribe((response: any) => {
+      if (response.IsActive) {
+        this.loginResponse = 'Login successful!';
         this.loginClass = 'alert-success';
-        localStorage.setItem("user", JSON.stringify(response));
-        this.auth.checkAdmin(response.Email).subscribe((value:any)=>{
-          console.log(value);
-          if(value==true){
-              this.router.navigateByUrl('admin');
-              localStorage.setItem("admin", "true");
+        let user={
+          UserId: response.UserId,
+          UserName: response.UserName,
+          Email: response.Email
+        }
+        localStorage.setItem("user", JSON.stringify(user));
+          if (response.IsAdmin) {
+            this.router.navigateByUrl('admin');
+            localStorage.setItem("admin", "true");
           }
-            else{
-              this.router.navigateByUrl('home');
-              localStorage.setItem("admin", "false");
-            }
-        })
+          else {
+            this.router.navigateByUrl('home');
+            localStorage.setItem("admin", "false");
+          }
+      }
+      else{
+        this.loginResponse = 'This account is deactivated';
+        this.loginClass = 'alert-danger';
       }
     },
-    (error)=>{
-      this.loginResponse='Incorrect email or password';
-      this.loginClass = 'alert-danger';
-    });
+      (error) => {
+        this.loginResponse = 'Incorrect email or password';
+        this.loginClass = 'alert-danger';
+      });
   }
 
 }

@@ -17,6 +17,7 @@ import { AdminCategoriesPageComponent } from './pages/admin-categories-page/admi
 import { AdminBooksPageComponent } from './pages/admin-books-page/admin-books-page.component';
 import { AdminCouponsPageComponent } from './pages/admin-coupons-page/admin-coupons-page.component';
 import { AdminOrdersPageComponent } from './pages/admin-orders-page/admin-orders-page.component';
+import { AdminUsersPageComponent } from './pages/admin-users-page/admin-users-page.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch:'full'},
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path:'admin/books', component:AdminBooksPageComponent, canActivate:[AdminGuard]},
   {path:'admin/coupons', component:AdminCouponsPageComponent, canActivate:[AdminGuard]},
   {path:'admin/orders', component:AdminOrdersPageComponent, canActivate:[AdminGuard]},
+  {path:'admin/users', component:AdminUsersPageComponent, canActivate:[AdminGuard]},
   {path:'**', redirectTo:'home'}
 ];
 

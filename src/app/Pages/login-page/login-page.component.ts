@@ -45,12 +45,7 @@ export class LoginPageComponent implements OnInit {
       if (response.IsActive) {
         this.loginResponse = 'Login successful!';
         this.loginClass = 'alert-success';
-        let user={
-          UserId: response.UserId,
-          UserName: response.UserName,
-          Email: response.Email
-        }
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("user", JSON.stringify(response));
           if (response.IsAdmin) {
             this.router.navigateByUrl('admin');
             localStorage.setItem("admin", "true");

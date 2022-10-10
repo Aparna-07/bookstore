@@ -1,0 +1,41 @@
+.wrapper{
+    height: 90vh;
+    background-color: rgba(216, 92, 39, 0.03);
+}
+.card{
+    margin: 40px auto;
+    padding: 0px 20px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px #d7cec7;
+}
+.card img{
+    border-radius: 1rem;
+}
+.form-group{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10px;
+}
+.form-group i{
+    margin: 10px 0px;
+}
+.form-group i:hover{
+cursor: pointer;
+}
+.form-group label{
+    margin: 5px 0px;
+}
+input:read-only, textarea:read-only{
+    background-color: #d7cec74a;
+}
+a{
+    display: block;
+    border-color: #d7cec7;
+    margin: 20px auto;
+    transition: all 200ms ease;
+}
+a:hover{
+    background-color: #d85c27;
+    color: white;
+    border: none;
+}

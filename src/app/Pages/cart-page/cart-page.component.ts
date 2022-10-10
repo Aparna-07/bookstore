@@ -69,6 +69,7 @@ export class CartPageComponent implements OnInit {
         "Qty": myQty.value
       }
       this.dataService.updateCart(cart).subscribe((response:any)=>{
+        console.log(cart)
         myQty.value=response.Qty;
         this.qty.set(bookId, response.Qty);
         window.location.reload();

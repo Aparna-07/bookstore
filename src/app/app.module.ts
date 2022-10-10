@@ -28,6 +28,7 @@ import { AdminCouponsPageComponent } from './pages/admin-coupons-page/admin-coup
 import { AdminOrdersPageComponent } from './pages/admin-orders-page/admin-orders-page.component';
 import { AdminCategoriesPageComponent } from './pages/admin-categories-page/admin-categories-page.component';
 import { AdminUsersPageComponent } from './pages/admin-users-page/admin-users-page.component';
+import { UserDetailsPageComponent } from './pages/user-details-page/user-details-page.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AdminUsersPageComponent } from './pages/admin-users-page/admin-users-pa
     AdminCouponsPageComponent,
     AdminOrdersPageComponent,
     AdminCategoriesPageComponent,
-    AdminUsersPageComponent
+    AdminUsersPageComponent,
+    UserDetailsPageComponent,
       ],
   imports: [
     BrowserModule,

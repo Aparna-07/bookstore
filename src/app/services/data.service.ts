@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Params, ROUTER_CONFIGURATION } from '@angular/router';
 
 @Injectable({
@@ -108,6 +108,15 @@ export class DataService {
   updateAddress(address:any){
     return this.http.put(this.baseUrl+'address', address);
   }
+  updateUsername(name:string, userId:number){
+    return this.http.get(this.baseUrl+'auth/updatename', {params:{name:name, userId:userId}});
+  }
+  updateEmail(email:string, userId:number){
+    return this.http.get(this.baseUrl+'auth/updateemail', {params:{email:email, userId:userId}});
+  }
+  updatePassword(password:string,  userId:number){
+    return this.http.get(this.baseUrl+'auth/updatepass',{params:{password:password, userId:userId}});
+  }
 
   getCoupons(total:any){
     return this.http.get(this.baseUrl+'coupon', {params:{total:total}});
@@ -154,7 +163,6 @@ export class DataService {
   }  
   deleteCoupon(code:string){
     return this.http.delete(this.baseUrl+'coupon', {params:{code:code}});
-    // return this.http.delete(this.baseUrl+'coupon', code);
   }  
   insertCoupon(coupon:any){
     return this.http.post(this.baseUrl+'coupon', coupon);
@@ -167,6 +175,9 @@ export class DataService {
   }
   deactivateUser(id:any){
     return this.http.get(this.baseUrl+'auth/deactivate', {params:{userId:id}});
+  }
+  checkDuplicateEmail(email:string){
+    return this.http.get(this.baseUrl+'auth/checkduplicate', {params:{email:email}});
   }
 }
 
